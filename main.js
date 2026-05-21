@@ -165,6 +165,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Rastrear cliques em botões que levam para o checkout da Kiwify
+  document.querySelectorAll('a[href*="kiwify.com.br"]').forEach(button => {
+    button.addEventListener('click', () => {
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'InitiateCheckout');
+      }
+    });
+  });
+
   window.addEventListener("load", () => {
     ScrollTrigger.refresh();
   });
